@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
-import './PNJForm.css'
+import "./PNJForm.css"
 
 function PNJForm() {
+    const [config, setConfig] = useState(undefined);
     const [isEditor, setIsEditor] = useState(true);
     const [name, setName] = useState("");
     const [size, setSize] = useState("M");
@@ -38,6 +39,10 @@ function PNJForm() {
     const [legendaryActions, setLegendaryActions] = useState([]);
     const [description, setDescription] = useState("");
     const [images, setImages] = useState([]);
+
+    useEffect(()=>{
+        fetch("Config.json").then((r)=>r.json()).then((data)=>setConfig(data));
+    }, []);
 
     useEffect(()=>{
         let mod = {};
@@ -80,7 +85,6 @@ function PNJForm() {
         if (speed === "") {
             warning += "Vous n'avez pas préciser de vitesse.\n";
         }
-        console.log(attributes);
         for (let [key, value] of Object.entries(attributes)){
             if (value < 0 || value > 30 || isNaN(value)) {
                 mandatory += "La valeur de " + key + " est invalide (0 <= " + key.slice(0,3) + " <= 30).\n";
@@ -279,12 +283,12 @@ function PNJForm() {
             }
             npc.DescriptionLines = description===""?[]:description.split("\n");
             npc.Images = images;
-            let config = {
+            let axiosConfig = {
                 headers: {
                     "Access-Control-Allow-Origin": "*", 
                 }
             }
-            axios.post("http://localhost:12345/npc", npc, config).then((response) => {
+            axios.post("http://localhost:" + String(config.backendPort) + config.npcRoute, npc, axiosConfig).then((response) => {
                 if (window.confirm("Génération réussi. La fiche de personnage se trouve dans le dossier \"out\" du répertoire du programme. Voulez-vous réinitialiser la fiche de personnage ?")) {
                     clearAll();
                     // setIsEditor(false);
