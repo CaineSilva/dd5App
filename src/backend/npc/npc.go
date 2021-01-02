@@ -1,4 +1,4 @@
-package main
+package npc
 
 import (
 	"fmt"
@@ -66,7 +66,9 @@ type SAVE_ROLL_MODIFIER struct {
 	Charisma int
 }
 
-type PNJ struct {
+type NPC struct {
+	OutPath string
+	TemplatePath string
 	Name string
 	Size string
 	Keywords string
@@ -101,7 +103,7 @@ type PNJ struct {
 	DescriptionLines []string
 }
 
-func (this *PNJ) prepare() {
+func (this *NPC) prepare() {
 	//JS string
 	s := ""
 	if this.SaveRollModifier.Force != 0 {
@@ -159,12 +161,13 @@ func (this *PNJ) prepare() {
 	}
 }
 
-func (this *PNJ) GenerateFile() error {
-	tmpl, err := template.New("pnj.template").Funcs(template.FuncMap{"dec": func (a int)int{ return a-1 }}).ParseFiles("templates/pnj.template")
+func (this *NPC) GenerateFile() error {
+	tmpl, err := template.New("npc.template").Funcs(template.FuncMap{"dec": func (a int)int{ return a-1 }}).ParseFiles(this.TemplatePath + "/npc.template")
 	if err != nil {
 		return err
 	}
-	file, err := os.Create("out/" + this.Name + ".md")
+	file, err := os.Create(this.OutPath + "/" + this.Name + ".md")
+	defer file.Close()
 	if err != nil {
 		return err
 	}
