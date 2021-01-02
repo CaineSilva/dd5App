@@ -1,6 +1,6 @@
 $version=$args[0]
 $appName="dd5App"
-$releaseName=$appName+"_"+$version
+$releaseName=$appName+"_v"+$version
 
 .\buildBackend.ps1
 .\buildFrontend.ps1
@@ -9,5 +9,6 @@ mkdir $releaseName\front
 cp -r front\build $releaseName\front
 cp -r templates $releaseName
 cp -r bin $releaseName
-zip -r $releaseName"."zip $releaseName/*
+cp run.cmd $releaseName
+zip -r $releaseName"."zip $releaseName\*
 rm -r $releaseName
