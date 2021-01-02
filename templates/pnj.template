@@ -1,0 +1,67 @@
+## {{ .Name }}
+
+*Taille {{ .Size }}, {{if .Keywords }}{{ .Keywords }}, {{end}}{{ .Alignment }}*
+
+> **Classe d'armure** : {{ .ArmorClass }} {{ if .ArmorType }}({{ .ArmorType }}){{ end}}
+> **Points de vie** : {{ .HealthPoint }} {{if and (ne .HealthDiceNumber 0) (ne .HealthDiceType 0)}}({{.HealthDiceNumber}}d{{.HealthDiceType}}{{if ne .HealthDiceBonus 0}}{{if gt .HealthDiceBonus 0}}+{{.HealthDiceBonus}}{{else}}{{.HealthDiceBonus}}{{end}}{{end}}){{end}}
+> **Vitesse** : {{ .Speeds}}
+>
+> | FOR  | DEX  | CON  | INT  | SAG  | CHA  |
+> | ---- | ---- | ---- | ---- | ---- | ---- |
+> | {{.Attributes.Force}}  | {{.Attributes.Dexterity}}   | {{.Attributes.Constitution}}   | {{.Attributes.Intelligence}}   | {{.Attributes.Wisdom}}   | {{.Attributes.Charisma}}   |
+> | ({{if ge .AttributesModifiers.Force 0}}+{{.AttributesModifiers.Force}}){{else}}{{.AttributesModifiers.Force}}){{end}}  | ({{if ge .AttributesModifiers.Dexterity 0}}+{{.AttributesModifiers.Dexterity}}){{else}}{{.AttributesModifiers.Dexterity}}){{end}}   | ({{if ge .AttributesModifiers.Constitution 0}}+{{.AttributesModifiers.Constitution}}){{else}}{{.AttributesModifiers.Constitution}}){{end}}   | ({{if ge .AttributesModifiers.Intelligence 0}}+{{.AttributesModifiers.Intelligence}}){{else}}{{.AttributesModifiers.Intelligence}}){{end}}   | ({{if ge .AttributesModifiers.Wisdom 0}}+{{.AttributesModifiers.Wisdom}}){{else}}{{.AttributesModifiers.Wisdom}}){{end}}   | ({{if ge .AttributesModifiers.Charisma 0}}+{{.AttributesModifiers.Charisma}}){{else}}{{.AttributesModifiers.Charisma}}){{end}}   |
+>
+{{if .SaveRollModifierString }}> **Jets de sauvegarde** : {{.SaveRollModifierString}}.
+{{ end }}{{if .SkillModifierString }}> **Compétences** : {{.SkillModifierString}}.
+{{end}}{{if .DamageVulnerability}}> **Vulnérabilité aux dégâts** : {{.DamageVulnerability}}.
+{{end}}{{if .DamageResistance}}> **Résistances aux dégâts** : {{.DamageResistance}}.
+{{end}}{{if .DamageImmunity}}> **Immunités aux dégâts** : {{.DamageImmunity}}.
+{{end}}{{if .ConditionImmunity}}> **Immunités aux conditions** : {{.ConditionImmunity}}.
+{{end}}{{if or .Senses .PassivePerception}}> **Sens** : {{if .Senses}}{{.Senses}}, {{end}}{{if .PassivePerception}}Perception passive {{.PassivePerception}}{{end}}.
+{{end}}{{if .Languages}}> **Langues** : {{.Languages}}.
+{{end}}> **Facteur de puissance** : {{.FP}} ({{.XP}} XP).
+{{if .Traits}}
+#### Traits
+
+{{range .Traits}}##### {{.Name}}
+
+{{.Description}}
+
+{{end}}
+{{end}}{{if .Actions}}
+#### Actions
+
+{{range .Actions}}##### {{.Name}}
+
+{{if .IsAttack}}{{with .AttackDetails}}_{{.Type}} {{if ge .AttackRollBonus 0}}+{{end}}{{.AttackRollBonus}}{{if .Reach}}, Portée {{.Reach}}{{end}}{{if .Target}}, Cible {{.Target}}{{end}}_
+_Dégâts : {{$size := dec (len .Damages)}}{{range $index, $element := .Damages}}{{.MeanDamage}} {{if and .DieNumber .DieType}}({{.DieNumber}}d{{.DieType}}{{if .DieBonus}}+{{.DieBonus}}{{end}}) {{end}}{{.DamageType}}{{if ne $index $size}}, {{end}}{{end}}_
+{{end}}{{end}}{{if .Description}}{{.Description}}{{end}}
+
+{{end}}
+{{end}}{{if .Reactions}}
+#### Réactions
+
+{{range .Reactions}}##### {{.Name}}
+
+{{.Description}}
+
+{{end}}
+{{end}}{{if .LegendaryActions}}
+#### Actions Légendaires
+
+{{.Name}} peut utiliser {{len .LegendaryActions}} actions légendaires par tour, en choisissant parmi les options suivantes. Une seule action légendaire peut être utilisée à la fois et seulement à la fin du tour d'une autre créature. {{.Name}} récupère les actions légendaires dépensées au début de son tour.
+
+{{range .LegendaryActions}}##### {{.Name}}
+
+{{if .IsAttack}}{{with .AttackDetails}}_{{.Type}} {{if ge .AttackRollBonus 0}}+{{end}}{{.AttackRollBonus}}{{if .Reach}}, Portée {{.Reach}}{{end}}{{if .Target}}, Cible {{.Target}}{{end}}_
+_Dégâts : {{$size := dec (len .Damages)}}{{range $index, $element := .Damages}}{{.MeanDamage}} {{if and .DieNumber .DieType}}({{.DieNumber}}d{{.DieType}}{{if .DieBonus}}+{{.DieBonus}}{{end}}) {{end}}{{.DamageType}}{{if ne $index $size}}, {{end}}{{end}}_
+{{end}}{{end}}{{if .Description}}{{.Description}}{{end}}
+
+{{end}}
+{{end}}{{if .DescriptionLines}}
+{{range .DescriptionLines}}> {{.}}
+{{end}}{{end}}{{if .Images}}
+
+{{range .Images}}{{if .}}![]({{.}}){{end}}
+
+{{end}}{{end}}

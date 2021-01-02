@@ -1,0 +1,7 @@
+front/build/**
+front/node_modules/**
+front/.eslintcache
+front/debug.log
+bin/**
+.idea/**
+out/**
