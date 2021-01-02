@@ -10,5 +10,6 @@ cp -r front\build $releaseName\front
 cp -r templates $releaseName
 cp -r bin $releaseName
 cp run.cmd $releaseName
+mkdir $releaseName\out
 zip -r $releaseName"."zip $releaseName\*
 rm -r $releaseName
