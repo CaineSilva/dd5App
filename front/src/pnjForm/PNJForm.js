@@ -302,7 +302,7 @@ function PNJForm() {
 
     return <div className="root">
         <div className="content">
-            <input className="button" type="button" value="Créer un nouveau PNJ" onClick={createNewNPC}/>
+            <input className="button" type="button" value="Réinitialiser tous les champs" onClick={createNewNPC}/>
             {isEditor?
             <>
                 <div className="sheetHeader">
@@ -355,13 +355,13 @@ function PNJForm() {
                 <table className="attributeTable">
                     <tbody>
                         <tr>
-                            <td className="tableLineTitle">Attribut</td>
+                            <th className="tableLineTitle"></th>
                             {Attributes.map((el)=>{
-                                return <td key={el}>{el}</td>
+                                return <th key={el}>{el}</th>
                             })}
                         </tr>
                         <tr>
-                            <td className="tableLineTitle">Score</td>
+                            <th className="tableLineTitle">Score</th>
                             {Attributes.map((el)=>{
                                 return <td key={el}>
                                     <input type="number" min={0} max={30} value={attributes[el]} onChange={(e)=>setAttributes((old)=>{
@@ -373,13 +373,13 @@ function PNJForm() {
                             })}
                         </tr>
                         <tr>
-                            <td className="tableLineTitle">Modificateur</td>
+                            <th className="tableLineTitle">Modificateur</th>
                             {Attributes.map((el)=>{
                                 return <td key={el}>{attributesModifier[el]>=0?"+" + String(attributesModifier[el]):attributesModifier[el]}</td>
                             })}
                         </tr>
                         <tr>
-                            <td className="tableLineTitle">Modificateur JS</td>
+                            <th className="tableLineTitle">Modificateur JS</th>
                             {Attributes.map((el)=>{
                                 return <td key={el}>
                                     <input type="number" min={-30} max={30} value={jsModifier[el]} onChange={(e)=>{
@@ -821,7 +821,7 @@ function PNJForm() {
                             </div>:null 
                         }
                 </div>
-                <div className="mainLine">
+                <div className="blockquote">
                     <div>Description</div>
                     <textarea className="descriptionArea" value={description} onChange={(e)=>setDescription(e.target.value)}/>
                 </div>

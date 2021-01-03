@@ -1,5 +1,19 @@
+:root {
+    --offwhite: #fff9e6;
+    --red: #58180d;
+    --green: #e0e5c1;
+    --yellow: #c9ad6a;
+    --grey: #6D6A75;
+    --black: #403333;
+
+    font-size: 3.35mm;
+    font-family: "Alegreya", sans-serif;
+    color: var(--black);
+}
+
 .root{
     background-color: grey;
+    background-image: url(https://i.pinimg.com/originals/1e/f4/86/1ef486a24dd55567a11479379f02a2f3.jpg);
     height: 100%;
     width: 100%;
     /* position: fixed; */
@@ -16,10 +30,40 @@
     padding: 10px;
     display: flex;
     background-color: lightgrey;
+    background-image: url(https://theeyeopener.com/wp-content/uploads/2019/03/DD-parchment.jpg);
     flex-direction: column;
     align-items: center;
     justify-items: center;
     justify-content: space-evenly;
+}
+
+th {
+    color: white;
+    background-color: var(--red);
+    padding: 0.2rem 0.5rem;
+}
+
+td {
+    border: none;
+    background: var(--green);
+    padding: 0.5rem;
+}
+
+table {
+    border-collapse: collapse;
+    text-align: center;
+    margin: 0;
+    width: 100%;
+}
+
+.blockquote {
+    break-inside: avoid;
+    margin: 5mm 0;
+    padding: 4mm;
+    width: 60%;
+    background-color: var(--green);
+    border-top: 5px solid var(--red);
+    border-bottom: 5px solid var(--red);
 }
 
 .button{
@@ -78,10 +122,6 @@
 .attributeTable{
     background-color: darkgrey;
     margin-bottom: 10px;
-}
-
-td{
-    padding: 3px;
 }
 
 .twoElementCell{

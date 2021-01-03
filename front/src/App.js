@@ -1,5 +1,5 @@
 
-import PNJForm from './PNJForm'
+import PNJForm from './pnjForm/PNJForm'
 
 function App() {
   return <PNJForm/>  
