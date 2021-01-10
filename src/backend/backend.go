@@ -9,6 +9,7 @@ type BackendConfig struct {
 	TemplatePath string
 	OutPath string
 	NPCRoute string
+	AideddRoute string
 }
 
 func CreateBackend(config BackendConfig) Backend {
@@ -17,5 +18,6 @@ func CreateBackend(config BackendConfig) Backend {
 		templatePath: config.TemplatePath,
 		outPath: config.OutPath,
 		npcRoute: config.NPCRoute,
+		aideddRoute: config.AideddRoute,
 	}
 }

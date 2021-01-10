@@ -82,8 +82,8 @@ type NPC struct {
 	Speeds string
 	Attributes ATTRIBUTES
 	AttributesModifiers ATTRIBUTES_MODIFIERS
-	SaveRollModifier SAVE_ROLL_MODIFIER
-	SaveRollModifierString string
+	SaveRollModifiers SAVE_ROLL_MODIFIER
+	SaveRollModifiersString string
 	Skills map[string]int
 	SkillModifierString string
 	XP int
@@ -106,44 +106,57 @@ type NPC struct {
 func (this *NPC) prepare() {
 	//JS string
 	s := ""
-	if this.SaveRollModifier.Force != 0 {
+	if this.SaveRollModifiers.Force != 0 {
 		s += "For"
-		if this.SaveRollModifier.Force>0{
-			s+=fmt.Sprintf("+%v, ", this.SaveRollModifier.Force)
+		if this.SaveRollModifiers.Force>0{
+			s+=fmt.Sprintf("+%v, ", this.SaveRollModifiers.Force)
+		} else {
+			s+=fmt.Sprintf("%v, ", this.SaveRollModifiers.Force)
 		}
 	}
-	if this.SaveRollModifier.Dexterity != 0 {
+	if this.SaveRollModifiers.Dexterity != 0 {
 		s += "Dex"
-		if this.SaveRollModifier.Dexterity>0{
-			s+=fmt.Sprintf("+%v, ", this.SaveRollModifier.Dexterity)
+		if this.SaveRollModifiers.Dexterity>0{
+			s+=fmt.Sprintf("+%v, ", this.SaveRollModifiers.Dexterity)
+		} else {
+			s+=fmt.Sprintf("%v, ", this.SaveRollModifiers.Dexterity)
 		}
+
 	}
-	if this.SaveRollModifier.Constitution != 0 {
+	if this.SaveRollModifiers.Constitution != 0 {
 		s += "Con"
-		if this.SaveRollModifier.Constitution>0{
-			s+=fmt.Sprintf("+%v, ", this.SaveRollModifier.Constitution)
+		if this.SaveRollModifiers.Constitution>0{
+			s+=fmt.Sprintf("+%v, ", this.SaveRollModifiers.Constitution)
+		} else {
+			s+=fmt.Sprintf("%v, ", this.SaveRollModifiers.Constitution)
 		}
 	}
-	if this.SaveRollModifier.Intelligence != 0 {
+	if this.SaveRollModifiers.Intelligence != 0 {
 		s += "Int"
-		if this.SaveRollModifier.Intelligence>0{
-			s+=fmt.Sprintf("+%v, ", this.SaveRollModifier.Intelligence)
+		if this.SaveRollModifiers.Intelligence>0{
+			s+=fmt.Sprintf("+%v, ", this.SaveRollModifiers.Intelligence)
+		} else {
+			s+=fmt.Sprintf("%v, ", this.SaveRollModifiers.Intelligence)
 		}
 	}
-	if this.SaveRollModifier.Wisdom != 0 {
+	if this.SaveRollModifiers.Wisdom != 0 {
 		s += "Sag"
-		if this.SaveRollModifier.Wisdom>0{
-			s+=fmt.Sprintf("+%v, ", this.SaveRollModifier.Wisdom)
+		if this.SaveRollModifiers.Wisdom>0{
+			s+=fmt.Sprintf("+%v, ", this.SaveRollModifiers.Wisdom)
+		} else {
+			s+=fmt.Sprintf("%v, ", this.SaveRollModifiers.Wisdom)
 		}
 	}
-	if this.SaveRollModifier.Charisma != 0 {
+	if this.SaveRollModifiers.Charisma != 0 {
 		s += "Cha"
-		if this.SaveRollModifier.Charisma>0{
-			s+=fmt.Sprintf("+%v, ", this.SaveRollModifier.Charisma)
+		if this.SaveRollModifiers.Charisma>0{
+			s+=fmt.Sprintf("+%v, ", this.SaveRollModifiers.Charisma)
+		} else {
+			s+=fmt.Sprintf("%v, ", this.SaveRollModifiers.Charisma)
 		}
 	}
 	if s != "" {
-		this.SaveRollModifierString = s[:len(s)-2]
+		this.SaveRollModifiersString = s[:len(s)-2]
 	}
 	// Skill string
 	s = ""

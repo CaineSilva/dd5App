@@ -9,13 +9,20 @@ import(
 	"os"
 )
 
-var FRONT_CONF = "{\"backendPort\": %v, \"npcRoute\": \"%v\"}"
+var FRONT_CONF = `{
+	"backendPort": %v, 
+	"npcRoute": "%v", 
+	"aideddRoute": "%v",
+	"version": "%v"
+}`
 
 type reactFrontend struct {
 	port string
 	staticPath string
 	npcRoute string
 	backendPort string
+	aideddRoute string
+	version string
 } 
 
 func (this *reactFrontend) Start() {
@@ -28,7 +35,7 @@ func (this *reactFrontend) Start() {
 		if err != nil {
 			fmt.Println("[FRONTEND] : " + err.Error())
 		}
-		file.Write([]byte(fmt.Sprintf(FRONT_CONF, this.backendPort, this.npcRoute)))
+		file.Write([]byte(fmt.Sprintf(FRONT_CONF, this.backendPort, this.npcRoute, this.aideddRoute, this.version)))
 		file.Close()
 		gin.SetMode(gin.ReleaseMode)
 		router := gin.New()
@@ -63,6 +70,5 @@ func (this *reactFrontend) OpenBrowser() {
 		if err != nil {
 			fmt.Println("BACKEND: " + err.Error())
 		}
-		cmd.Wait()
 	}()
 }

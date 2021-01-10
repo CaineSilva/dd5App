@@ -1,11 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux'
+import store from './redux/store'
+import DD5App from './DD5App';
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <DD5App/>
+  </Provider>,
   document.getElementById('root')
 );

@@ -10,6 +10,8 @@ type FrontendConfig struct {
 	StaticPath string 
 	BackendPort string
 	NPCRoute string
+	AideddRoute string
+	Version string
 }
 
 func CreateFrontend(config FrontendConfig) Frontend {
@@ -18,5 +20,7 @@ func CreateFrontend(config FrontendConfig) Frontend {
 		staticPath: config.StaticPath,
 		backendPort: config.BackendPort,
 		npcRoute: config.NPCRoute,
+		aideddRoute: config.AideddRoute,
+		version: config.Version,
 	}
 }

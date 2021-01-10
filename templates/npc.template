@@ -11,7 +11,7 @@
 > | {{.Attributes.Force}}  | {{.Attributes.Dexterity}}   | {{.Attributes.Constitution}}   | {{.Attributes.Intelligence}}   | {{.Attributes.Wisdom}}   | {{.Attributes.Charisma}}   |
 > | ({{if ge .AttributesModifiers.Force 0}}+{{.AttributesModifiers.Force}}){{else}}{{.AttributesModifiers.Force}}){{end}}  | ({{if ge .AttributesModifiers.Dexterity 0}}+{{.AttributesModifiers.Dexterity}}){{else}}{{.AttributesModifiers.Dexterity}}){{end}}   | ({{if ge .AttributesModifiers.Constitution 0}}+{{.AttributesModifiers.Constitution}}){{else}}{{.AttributesModifiers.Constitution}}){{end}}   | ({{if ge .AttributesModifiers.Intelligence 0}}+{{.AttributesModifiers.Intelligence}}){{else}}{{.AttributesModifiers.Intelligence}}){{end}}   | ({{if ge .AttributesModifiers.Wisdom 0}}+{{.AttributesModifiers.Wisdom}}){{else}}{{.AttributesModifiers.Wisdom}}){{end}}   | ({{if ge .AttributesModifiers.Charisma 0}}+{{.AttributesModifiers.Charisma}}){{else}}{{.AttributesModifiers.Charisma}}){{end}}   |
 >
-{{if .SaveRollModifierString }}> **Jets de sauvegarde** : {{.SaveRollModifierString}}.
+{{if .SaveRollModifiersString }}> **Jets de sauvegarde** : {{.SaveRollModifiersString}}.
 {{ end }}{{if .SkillModifierString }}> **Compétences** : {{.SkillModifierString}}.
 {{end}}{{if .DamageVulnerability}}> **Vulnérabilité aux dégâts** : {{.DamageVulnerability}}.
 {{end}}{{if .DamageResistance}}> **Résistances aux dégâts** : {{.DamageResistance}}.
@@ -33,8 +33,8 @@
 
 {{range .Actions}}##### {{.Name}}
 
-{{if .IsAttack}}{{with .AttackDetails}}_{{.Type}} {{if ge .AttackRollBonus 0}}+{{end}}{{.AttackRollBonus}}{{if .Reach}}, Portée {{.Reach}}{{end}}{{if .Target}}, Cible {{.Target}}{{end}}_
-_Dégâts : {{$size := dec (len .Damages)}}{{range $index, $element := .Damages}}{{.MeanDamage}} {{if and .DieNumber .DieType}}({{.DieNumber}}d{{.DieType}}{{if .DieBonus}}+{{.DieBonus}}{{end}}) {{end}}{{.DamageType}}{{if ne $index $size}}, {{end}}{{end}}_
+{{if .IsAttack}}{{with .AttackDetails}}_{{.Type}} {{if ge .AttackRollBonus 0}}+{{end}}{{.AttackRollBonus}}{{if .Reach}}, Portée {{.Reach}}{{end}}{{if .Target}}, Cible {{.Target}}{{end}}_{{if .Damages}}
+Touché : {{$size := dec (len .Damages)}}{{range $index, $element := .Damages}}{{.MeanDamage}} {{if and .DieNumber .DieType}}({{.DieNumber}}d{{.DieType}}{{if .DieBonus}}+{{.DieBonus}}{{end}}) {{end}}{{.DamageType}}{{if ne $index $size}}, {{end}}{{end}}{{end}}
 {{end}}{{end}}{{if .Description}}{{.Description}}{{end}}
 
 {{end}}
