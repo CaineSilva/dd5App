@@ -1,1 +1,1 @@
-bin\dd5App.exe -templatePath=templates -out=out -static=front\build -frontPort=4242 -backPort=6262 -npcRoute=/npc -aideddRoute=/aidedd -openBrowser=true -noBackend=false -noFrontend=false -version=4.0
+bin\dd5App.exe -templatePath=templates -out=out -static=front\build -frontPort=4242 -backPort=6262 -npcRoute=/npc -aideddRoute=/aidedd -openBrowser=true -noBackend=false -noFrontend=false -version=2.0
