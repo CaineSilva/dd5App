@@ -1,5 +1,5 @@
 {
-    "backendPort": 12345, 
+    "backendPort": 6262, 
     "npcRoute": "/npc", 
     "aideddRoute": "/aidedd",
     "version": "v2"

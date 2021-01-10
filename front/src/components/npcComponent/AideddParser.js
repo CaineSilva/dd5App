@@ -129,11 +129,10 @@ function parseAttackFromDescription(description) {
         refine = remains.split("au toucher,");
         details.AttackRollBonus = parseInt(refine[0].trim());
         remains = remains.replace(refine[0] + "au toucher,", "").trim();
-        refine = remains.split(",");
-        details.Reach = refine[0].substring("allonge".length).trim();
-        remains = remains.substring(refine[0].length + 1).trim();
         refine = remains.split(".");
-        details.Target = refine[0].trim();
+        console.log(refine)
+        details.Reach = refine[0].split(",").reduce((acc, el, index, arr)=>index===arr.length-1?acc:acc+","+el, "").substring(1).trim();
+        details.Target = refine[0].split(",")[refine[0].split(",").length-1].trim();
         remains = remains.substring(refine[0].length + 1).trim();
     } else {
         console.log("Unknwon attack type " + refine[0].trim());
