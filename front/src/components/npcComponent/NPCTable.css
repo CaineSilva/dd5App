@@ -1,0 +1,56 @@
+
+.npc-table-wrapper {
+    display: grid;
+    grid-template-rows: auto auto;
+    gap: 10px;
+    align-items: center;
+    justify-items: center;
+    border-bottom: solid 3px var(--lightred);
+    padding: 10px;
+    overflow-x: auto;
+}
+
+.npc-table-title {
+    font: inherit;
+    font-size: 16px;
+    color: var(--lightred);
+    font-weight: 500;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.npc-table-head-cell{
+    color: var(--lightred);
+    font: inherit;
+    font-weight: 600;   
+    padding: 6px;
+}
+
+.npc-table-cell-value {
+    background-color: transparent;
+    color: black;
+    cursor: pointer;
+    font: inherit;
+    font-size: 14px;
+    border: solid 1px;
+}
+
+.npc-table-cell-value:focus {
+    outline: none;
+    border: solid 1px var(--yellow);
+}
+
+.readonly-cell {
+    font: inherit;
+    border: none;
+    text-align: center;
+    color: var(--lightred);
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.npc-table-cell {
+    width: 80px;
+}

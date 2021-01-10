@@ -1,0 +1,6 @@
+{
+    "backendPort": 12345, 
+    "npcRoute": "/npc", 
+    "aideddRoute": "/aidedd",
+    "version": "v2"
+}

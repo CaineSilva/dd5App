@@ -1,0 +1,100 @@
+:root {
+    --offwhite: #fff9e6;
+    --red: #58180d;
+    --green: #e0e5c1;
+    --yellow: #c9ad6a;
+    --grey: #6D6A75;
+    --black: #403333;
+    --lightred: #8f2c1a;
+    --parchment-url: url(https://theeyeopener.com/wp-content/uploads/2019/03/DD-parchment.jpg);
+
+    font-size: 3.35mm;
+    font-family: "Alegreya", sans-serif;
+    color: var(--black);
+}
+
+.app-root{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-image: url(https://i.pinimg.com/originals/1e/f4/86/1ef486a24dd55567a11479379f02a2f3.jpg);
+    height: 100%;
+    width: 100%;
+}
+
+.app-header {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    color: white;
+    margin-bottom: 10px;
+
+}
+
+.site-name {
+    font-family: "Crimson Text", serif;
+    font-variant: small-caps;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    font-size: 3rem;
+}
+
+.app-content {
+    background-image: var(--parchment-url);
+    height: max-content;
+    flex-grow: 999;
+    min-width: 65%;
+    max-width: 65%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    overflow-x: auto;
+    justify-content: center;
+}
+
+.app-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.a-on-wood {
+    color: grey
+}
+
+.previous {
+    position: fixed;
+    left: 50px;
+    font-size: large;
+}
+
+.styled-button {
+    padding: .9rem 1.7rem;
+    color: black;
+    font-weight: 500;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+    border: solid 1px black;
+    box-shadow: inset 0 0 0 2px var(--lightred);
+}
+
+.styled-button:hover {
+    text-decoration: underline;
+    background: hsl(0,0,20%);
+    box-shadow: inset 0 0 0 3px var(--yellow);
+}
+
+.styled-button:active {
+    background: hsl(0, 0%, 30%);
+}
