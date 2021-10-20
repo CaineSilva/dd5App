@@ -1,9 +1,9 @@
 package backend
 
 import (
+	"./npc"
 	"encoding/json"
 	"fmt"
-	"github.com/CaineSilva/pnjGenerator/src/backend/npc"
 	"io/ioutil"
 	"net/http"
 )
