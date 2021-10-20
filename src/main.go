@@ -4,8 +4,8 @@ import (
 	"flag"
 	"os"
 
-	"./backend"
-	"./frontend"
+	"github.com/CaineSilva/dd5App/src/backend"
+	"github.com/CaineSilva/dd5App/src/frontend"
 )
 
 func main() {

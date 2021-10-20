@@ -1,7 +1,7 @@
 package backend
 
 import (
-	"./npc"
+	"github.com/CaineSilva/dd5App/src/backend/npc"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
