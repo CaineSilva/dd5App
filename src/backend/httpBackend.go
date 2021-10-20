@@ -3,9 +3,9 @@ package backend
 import (
 	"encoding/json"
 	"fmt"
-	"net/http"
-	"pnjgenerator/src/backend/npc"
+	"github.com/CaineSilva/pnjGenerator/src/backend/npc"
 	"io/ioutil"
+	"net/http"
 )
 
 type httpBackend struct {

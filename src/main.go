@@ -4,8 +4,8 @@ import (
 	"flag"
 	"os"
 
-	"pnjgenerator/src/frontend"
-	"pnjgenerator/src/backend"
+	"github.com/CaineSilva/pnjGenerator/src/backend"
+	"github.com/CaineSilva/pnjGenerator/src/frontend"
 )
 
 func main() {
